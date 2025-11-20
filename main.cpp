@@ -1,39 +1,17 @@
 #include <iostream>
 using namespace std;
 
+int accumulate(int n);
+
 int main() {
-    int stack[5];
-    int top = -1; // 初始化堆疊頂端指標
-
-    // 壓入元素
-    top++;
-    stack[top] = 10;
-    top++;
-    stack[top] = 20;
-    top++;
-    stack[top] = 30;
-
-    // 顯示目前堆疊內容
-    cout << "目前堆疊內容: " << endl;
-    for (int i = 0; i <= top; i++) {
-        cout << stack[i] << " ";
-    }
-    cout << endl << endl;
-
-    // 彈出元素
-    if (top >= 0) {
-        cout << "彈出元素: " << stack[top] << endl;
-        top--;
-    } else {
-        cout << "堆疊是空的，不能彈出！" << endl;
-    }
-
-    // 顯示彈出後堆疊內容
-    cout << "彈出後堆疊內容: " << endl;
-    for (int i = 0; i <= top; i++) {
-        cout << stack[i] << " ";
-    }
-    cout << endl;
-
+    int number = 100;
+    cout << "從1加到" << number << "總合為: " << accumulate(number) << endl;
     return 0;
+}
+
+int accumulate(int n) {
+    if (n == 1) {
+        return 1;
+    }
+    return n + accumulate(n - 1);  // Recursively sum numbers
 }
